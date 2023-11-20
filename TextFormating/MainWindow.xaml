@@ -1,0 +1,80 @@
+﻿<Window x:Class="TextFormating.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TextFormating"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="700">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <!-- TextBlock (and TextBox for input)-->
+        <TextBlock x:Name="mainTextBlock" Grid.Row="1" Margin="8"/>
+        <TextBox x:Name="transpTextBox" Grid.Row="1" Margin="8" 
+                 TextChanged="UpdateText" Opacity="0"/>
+
+        <Grid Grid.Row="0">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!-- Up menu (Format buttons, color, fontsize)-->
+            <Menu Grid.Row="0">
+                <!-- Buttons Bold, Italic, Underline, Clear-->
+                <TextBlock x:Name="TextBlockBold" Text="Bold" FontSize="20" 
+                           FontWeight="Bold" MouseLeftButtonDown="TextBlockFormat_LeftMouseButtonDown"/>
+                <TextBlock x:Name="TextBlockItalic" Text="Italic" FontSize="20" 
+                           FontStyle="Italic" MouseLeftButtonDown="TextBlockFormat_LeftMouseButtonDown"/>
+                <TextBlock x:Name="TextBlockUnderline" Text="Underline" FontSize="20" 
+                           TextDecorations="Underline" MouseLeftButtonDown="TextBlockFormat_LeftMouseButtonDown"/>
+                <TextBlock x:Name="TextBlockClear" Text="Clear" FontSize="20" 
+                           MouseLeftButtonDown="TextBlockFormat_LeftMouseButtonDown"/>
+
+                <TextBlock Text="|" FontSize="20"/>
+                
+                <!-- FontSize-->
+                <TextBlock Text="FontSize: " FontSize="20" Margin="0,0,-15,0"/>
+                <TextBox x:Name="fontSizeTextBox" Width="40" Height="30" Margin="0,5,15,0" 
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TextBox_TextChanged"/>
+
+                <TextBlock Text="|" FontSize="20"/>
+
+                <!-- Color -->
+                <MenuItem Header="Color: " FontSize="20"/>
+                <MenuItem x:Name="colorMenuItem" Width="100" Margin="5" 
+                          Background="Black" BorderThickness="1" BorderBrush="Black">
+                    <MenuItem Header="Black"  Background="Black" Foreground="White" Click="ColorMenuItem_Click"/>
+                    <MenuItem Header="Red"    Background="Red" Click="ColorMenuItem_Click"/>
+                    <MenuItem Header="Green"  Background="Green"  Click="ColorMenuItem_Click"/>
+                    <MenuItem Header="Yellow" Background="Yellow" Click="ColorMenuItem_Click"/>
+                    <MenuItem Header="Blue"   Background="Blue" Click="ColorMenuItem_Click"/>
+                    <MenuItem Header="Violet" Background="Violet" Click="ColorMenuItem_Click"/>
+                </MenuItem>
+                                
+            </Menu>
+            
+            <!-- TextBoxes start and end (index) -->
+            <Menu Grid.Row="1">
+
+                <TextBlock Text="Start: " FontSize="20" Margin="0,0,-15,0"/>
+                <TextBox x:Name="startIndexTextBox" Width="40" Height="30" Margin="0,5,15,0" 
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TextBox_TextChanged" />
+                
+                <TextBlock Text="End: " FontSize="20" Margin="0,0,-15,0"/>
+                <TextBox x:Name="endIndexTextBox" Width="40" Height="30" Margin="0,5,15,0" 
+                         VerticalContentAlignment="Center" HorizontalContentAlignment="Center"
+                         HorizontalAlignment="Center" VerticalAlignment="Center" TextChanged="TextBox_TextChanged"/>
+            </Menu>
+
+
+        </Grid>
+        
+    </Grid>
+</Window>
