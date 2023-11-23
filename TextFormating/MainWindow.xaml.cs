@@ -119,6 +119,7 @@ namespace TextFormating
             WorkText.SettingsFormat.Style = FontStyles.Normal;
             WorkText.SettingsFormat.Decorations = null;
             WorkText.SettingsFormat.Color = Brushes.Black;
+            WorkText.SettingsFormat.FontSize = 25;
         }
         private void ApplyFormating()
         {
