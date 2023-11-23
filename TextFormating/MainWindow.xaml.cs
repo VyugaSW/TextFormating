@@ -38,12 +38,16 @@ namespace TextFormating
             WorkText = new WorkTextFormat();
         }
 
-        private void UpdateText(object sender, TextChangedEventArgs e) 
+        private void UpdateText(object sender, TextChangedEventArgs e)
         {
-            if(transpTextBox.Text.Length >= WorkText.TextFormat.TextInRuns.Count)
-                mainTextBlock.Inlines.Add(WorkText.AddRun(transpTextBox.Text.Last()));
-            else
-                mainTextBlock.Inlines.Remove(WorkText.RemoveRun());
+            try
+            {
+                if (transpTextBox.Text.Length >= WorkText.TextFormat.TextInRuns.Count)
+                    mainTextBlock.Inlines.Add(WorkText.AddRun(transpTextBox.Text.Last()));
+                else
+                    mainTextBlock.Inlines.Remove(WorkText.RemoveRun());
+            }
+            catch (Exception) { }
         }
         private void ColorMenuItem_Click(object sender, RoutedEventArgs e)
         {
